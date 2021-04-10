@@ -1,0 +1,28 @@
+<div class="btn-group">
+    <!-- boton de agregar cliente -->
+    <button class="btn btn-primary" (click)="guardarCliente()">Guardar Cliente</button>
+    <!-- boton de guardar productos -->
+    <button class="btn btn-primary" (click)="guardarProducto()">Guardar Producto</button>
+    <!-- boton de leer tanto producto y cliente -->
+    <!-- <button class="btn btn-danger" (click)="leer()">Leer </button> -->
+    <!-- boton para eliminar cliente de localStorage -->
+    <button class="btn btn-danger" (click)="eliminarCliente()">eliminar Cliente </button>
+    <!-- boton para eliminar Productos de localStorage -->
+    <button class="btn btn-danger" (click)="eliminarProducto()">eliminar Producto </button>
+    <!-- boton para eliminar tanto producto como cliente -->
+    <button class="btn btn-danger" (click)="eliminarTodos()">eliminar Todos </button>
+</div>
+
+<div class="container">
+   <div class="clientesContenedor" *ngFor="let cliente of ClienteLocales">
+       <p>Cliente : {{cliente.nombre}}</p>
+       <p>Edad : {{cliente.edad}}</p>
+   </div>
+</div>
+<hr>
+<div class="container">
+    <div class="productoContenedor" *ngFor="let producto of productoLocales">
+        <p>Producto : {{producto.nombre}}</p>
+        <p>Edad : {{producto.precio | currency: '$ :' }}</p>
+    </div>
+ </div>
