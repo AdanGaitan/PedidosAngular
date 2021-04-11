@@ -9,8 +9,18 @@ export class Pedidos
     pedidoDetalle:Array<PedidoDetalle>
 
 
-    constructor()
+    constructor(datos? : Pedidos)
     {
+        if(datos != null)
+        {
+          this.pedidoID = datos.pedidoID;
+          this.clienteID = datos.clienteID;
+          this.nombreCliente = datos.nombreCliente;
+          this.total = datos.total;
+          this.pedidoDetalle = datos.pedidoDetalle;
+          return;
+        }
+
         this.pedidoID = this.pedidoID;
         this.clienteID = this.clienteID;
         this.nombreCliente = this.nombreCliente;
@@ -35,8 +45,25 @@ export class Pedidos
         this.pedidoDetalle[posicion].cantidad++;
         this.pedidoDetalle[posicion].total =  this.pedidoDetalle[posicion].cantidad *  this.pedidoDetalle[posicion].precio;
       }  
-      else {this.pedidoDetalle.push(pedidoDetalle)}
+      else 
+      {
+        this.pedidoDetalle.push(pedidoDetalle);
+      }      
+    this.actualizarTotal();
+    }
 
-      
+    // metodo para actualizar los totales
+    private  actualizarTotal()
+    {
+      this.total = 0;
+      this.pedidoDetalle.forEach(producto => {
+        this.total = this.total + producto.total;
+      })
+    }
+
+    public actualizarCantidad(posicion: number)
+    {
+      this.pedidoDetalle[posicion].total = this.pedidoDetalle[posicion].cantidad * this.pedidoDetalle[posicion].precio;
+      this.actualizarTotal();
     }
 }
