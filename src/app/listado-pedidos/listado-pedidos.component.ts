@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Pedidos } from '../models/pedidos';
+import { PedidosService } from '../services/pedidos.service';
 
 @Component({
   selector: 'app-listado-pedidos',
@@ -7,9 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListadoPedidosComponent implements OnInit {
 
-  constructor() { }
+  listadoPedido: Pedidos[] = new Array<Pedidos>();
+  constructor(public pedidosServicio:PedidosService) { }
 
   ngOnInit(): void {
+    this.listadoPedido = this.pedidosServicio.listadoPedidosLocalStorage;
   }
 
 }

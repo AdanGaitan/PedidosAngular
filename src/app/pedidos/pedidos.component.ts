@@ -24,4 +24,10 @@ export class PedidosComponent implements OnInit {
   guardar(){
     this.pedidosServicio.guardarPedido();
   }
+  eliminar(posicion: number)
+  {
+    this.pedidosServicio.pedido.pedidoDetalle.splice(posicion,1);
+    this.pedidosServicio.guardarLocalStorage();
+
+  }
 }

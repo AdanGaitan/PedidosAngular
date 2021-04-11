@@ -1,1 +1,11 @@
-<p>listado-pedidos works!</p>
+<div class="container">
+    <div class="card" style="width: 18rem;" *ngFor="let pedido of listadoPedido">
+        <div class="card-body">
+          <h5 class="card-title">{{pedido.nombreCliente}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+          <p class="card-text">{{pedido.pedidoDetalle.length}}</p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Total : {{pedido.total | currency : '$ '}}</a>
+        </div>
+      </div>
+</div>
